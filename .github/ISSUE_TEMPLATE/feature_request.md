@@ -7,7 +7,7 @@ assignees: ''
 
 ---
 
-**Is your task related to an existing task? Please describe.**
+**Is this a subtask of an existing task? Please describe.**
 A description of what task this is a subtask of (if applicable) and how it relates. Ex. This is a subtask of the combat system because [...]
 
 **Describe the task**
