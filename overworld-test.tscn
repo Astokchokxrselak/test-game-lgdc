@@ -1,0 +1,32 @@
+[gd_scene format=4 uid="uid://yiv3f68x3bdi"]
+
+[ext_resource type="Texture2D" uid="uid://cio1uyp45dpmf" path="res://assets/test sprites/tileset.png" id="1_03qsq"]
+[ext_resource type="Texture2D" uid="uid://cvy5660kkj6uj" path="res://assets/test sprites/rygos_overworld.png" id="2_xuk6i"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hmeho"]
+texture = ExtResource("1_03qsq")
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_vx38l"]
+sources/0 = SubResource("TileSetAtlasSource_hmeho")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_03qsq"]
+size = Vector2(16, 16)
+
+[node name="Node2D" type="Node2D" unique_id=954242990]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=2035027572]
+tile_map_data = PackedByteArray("AAD//wAAAAABAAEAAAAAAAAAAAABAAEAAAAAAP//AAABAAEAAAD/////AAABAAEAAAD///7/AAABAAEAAAAAAP7/AAABAAEAAAABAP7/AAABAAEAAAABAP//AAABAAEAAAABAAAAAAABAAEAAAABAAEAAAABAAEAAAAAAAEAAAABAAEAAAD//wEAAAABAAEAAAD+/wEAAAABAAEAAAD+/wAAAAABAAEAAAD+////AAABAAEAAAD+//7/AAABAAEAAAD///3/AAABAAEAAAAAAP3/AAABAAEAAAD//wIAAAAAAAAAAAAAAAIAAAAAAAAAAAABAP3/AAABAAEAAAD+//3/AAABAAEAAAD+/wIAAAAAAAAAAAABAAIAAAAAAAAAAAD9//7/AAABAAEAAAD9////AAABAAEAAAD9/wAAAAABAAEAAAD9/wEAAAAAAAAAAAACAP7/AAABAAEAAAACAP//AAABAAEAAAACAAAAAAABAAEAAAACAAEAAAAAAAAAAAD9//z/AAAAAAAAAAD+//v/AAAAAAAAAAD///v/AAAAAAAAAAAAAPv/AAAAAAAAAAABAPv/AAAAAAAAAAACAPz/AAAAAAAAAAADAP3/AAAAAAAAAAD+//z/AAAAAAEAAAD///z/AAAAAAEAAAAAAPz/AAAAAAEAAAABAPz/AAAAAAEAAAACAP3/AAAAAAEAAAD9//3/AAAAAAEAAAADAP7/AAAAAAAAAAADAP//AAAAAAAAAAADAAAAAAAAAAAAAAADAAEAAAAAAAEAAAACAAIAAAAAAAEAAAABAAMAAAAAAAEAAAAAAAMAAAAAAAEAAAD//wMAAAAAAAEAAAD+/wMAAAAAAAEAAAD9/wIAAAAAAAEAAAD8/wAAAAAAAAAAAAD8////AAAAAAAAAAD8//7/AAAAAAAAAAD8//3/AAAAAAAAAAD8/wEAAAAAAAEAAAA=")
+tile_set = SubResource("TileSet_vx38l")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=851011765]
+
+[node name="RygosOverworld" type="Sprite2D" parent="StaticBody2D" unique_id=1225076755]
+texture = ExtResource("2_xuk6i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=616824893]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_03qsq")

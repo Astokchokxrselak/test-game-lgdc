@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dh53k7nrnbyqq"]
+
+[ext_resource type="Texture2D" uid="uid://bypoci3s70gwp" path="res://assets/test sprites/rygos_battle.png" id="1_raif2"]
+[ext_resource type="Texture2D" uid="uid://wp5yfrtld6el" path="res://assets/test sprites/inmate_battle.png" id="2_s0t75"]
+
+[node name="combat" type="Node2D" unique_id=1652233862]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1536239440]
+position = Vector2(-319, 0)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_raif2")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1356941752]
+position = Vector2(319, -20)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_s0t75")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1381116375]
