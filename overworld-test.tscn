@@ -1,14 +1,17 @@
 [gd_scene format=4 uid="uid://yiv3f68x3bdi"]
 
 [ext_resource type="Texture2D" uid="uid://cio1uyp45dpmf" path="res://assets/test sprites/tileset.png" id="1_03qsq"]
+[ext_resource type="Script" uid="uid://diw6a0fqfc6xq" path="res://GameManager.cs" id="1_hmeho"]
 [ext_resource type="Script" uid="uid://bs3rwbsc5oyu6" path="res://assets/scripts/overworld/CharacterController.cs" id="2_hmeho"]
 [ext_resource type="Texture2D" uid="uid://cvy5660kkj6uj" path="res://assets/test sprites/rygos_overworld.png" id="2_xuk6i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hmeho"]
 texture = ExtResource("1_03qsq")
 0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
 0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:1/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_vx38l"]
@@ -19,6 +22,7 @@ sources/0 = SubResource("TileSetAtlasSource_hmeho")
 size = Vector2(16, 16)
 
 [node name="Node2D" type="Node2D" unique_id=954242990]
+script = ExtResource("1_hmeho")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=2035027572]
 tile_map_data = PackedByteArray("AAD//wAAAAABAAEAAAAAAAAAAAABAAEAAAAAAP//AAABAAEAAAD/////AAABAAEAAAD///7/AAABAAEAAAAAAP7/AAABAAEAAAABAP7/AAABAAEAAAABAP//AAABAAEAAAABAAAAAAABAAEAAAABAAEAAAABAAEAAAAAAAEAAAABAAEAAAD//wEAAAABAAEAAAD+/wEAAAABAAEAAAD+/wAAAAABAAEAAAD+////AAABAAEAAAD+//7/AAABAAEAAAD///3/AAABAAEAAAAAAP3/AAABAAEAAAABAP3/AAABAAEAAAD+//3/AAABAAEAAAD9//7/AAABAAEAAAD9////AAABAAEAAAD9/wAAAAABAAEAAAACAP7/AAABAAEAAAACAP//AAABAAEAAAACAAAAAAABAAEAAAA=")
@@ -30,6 +34,7 @@ tile_set = SubResource("TileSet_vx38l")
 
 [node name="RygosOverworld" type="CharacterBody2D" parent="." unique_id=1960897741]
 script = ExtResource("2_hmeho")
+AIType = 2
 
 [node name="RygosSprite" type="Sprite2D" parent="RygosOverworld" unique_id=1225076755]
 texture = ExtResource("2_xuk6i")
@@ -37,3 +42,5 @@ texture = ExtResource("2_xuk6i")
 [node name="RygosCollider" type="CollisionShape2D" parent="RygosOverworld" unique_id=616824893]
 position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_03qsq")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1309246813]
