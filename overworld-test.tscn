@@ -21,6 +21,60 @@ sources/0 = SubResource("TileSetAtlasSource_hmeho")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_03qsq"]
 size = Vector2(16, 16)
 
+[sub_resource type="Animation" id="Animation_hmeho"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RygosSprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_vx38l"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RygosSprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_g144q"]
+resource_name = "moving"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RygosSprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.283185307179586]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_htmdd"]
+_data = {
+&"RESET": SubResource("Animation_hmeho"),
+&"idle": SubResource("Animation_vx38l"),
+&"moving": SubResource("Animation_g144q")
+}
+
 [node name="Node2D" type="Node2D" unique_id=954242990]
 script = ExtResource("1_hmeho")
 
@@ -43,4 +97,8 @@ texture = ExtResource("2_xuk6i")
 position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_03qsq")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="RygosOverworld" unique_id=746580459]
+libraries/ = SubResource("AnimationLibrary_htmdd")
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1309246813]
+zoom = Vector2(10, 10)
