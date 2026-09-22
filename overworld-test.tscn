@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://diw6a0fqfc6xq" path="res://GameManager.cs" id="1_hmeho"]
 [ext_resource type="Script" uid="uid://bs3rwbsc5oyu6" path="res://assets/scripts/overworld/CharacterController.cs" id="2_hmeho"]
 [ext_resource type="Texture2D" uid="uid://cvy5660kkj6uj" path="res://assets/test sprites/rygos_overworld.png" id="2_xuk6i"]
+[ext_resource type="Script" uid="uid://b2uk7l6gldv43" path="res://assets/scripts/player/PlayerData.cs" id="5_g144q"]
+[ext_resource type="Script" uid="uid://oax05jyivwmv" path="res://assets/scripts/overworld/OverworldCamera.cs" id="5_vx38l"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hmeho"]
 texture = ExtResource("1_03qsq")
@@ -54,6 +56,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_g144q"]
 resource_name = "moving"
+length = 0.2
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -62,10 +65,10 @@ tracks/0/path = NodePath("RygosSprite:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.0, 6.283185307179586]
+"values": [0.0, 0.17453292519943295]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_htmdd"]
@@ -100,5 +103,9 @@ shape = SubResource("RectangleShape2D_03qsq")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="RygosOverworld" unique_id=746580459]
 libraries/ = SubResource("AnimationLibrary_htmdd")
 
+[node name="PlayerData" type="Node2D" parent="RygosOverworld" unique_id=1560923318]
+script = ExtResource("5_g144q")
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1309246813]
-zoom = Vector2(10, 10)
+zoom = Vector2(3, 3)
+script = ExtResource("5_vx38l")

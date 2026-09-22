@@ -37,6 +37,20 @@ public partial class CharacterController : CharacterBody2D, IEntity
 			}
 		}
 	}
+	public void UpdateAnimation(string name)
+	{
+		if (!OverworldAIController.OverrideAnimation)
+		{
+			throw new ArgumentException("UpdateAnimation(string name) should only be called when OverrideAnimation is true.");
+		}
+		if (animationPlayer != null && !string.IsNullOrEmpty(currentAnimation))
+		{
+			if (!animationPlayer.IsPlaying() || animationPlayer.CurrentAnimation != currentAnimation)
+			{
+				animationPlayer.Play(name);
+			}
+		}
+	}
 
 	public void Move(Vector2 direction, float speed)
 	{
@@ -46,10 +60,26 @@ public partial class CharacterController : CharacterBody2D, IEntity
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _PhysicsProcess(double delta)
+	public void MovementProcess(double delta)
 	{
 		PlayAnimation("idle");
+		if (OverworldAIController.OverrideMovement)
+		{
+			return;
+		}
 		OverworldAIController.UpdateCharacterAI(this, AIType, delta);
+	}
+	public void AnimationProcess(double delta)
+	{
+		if (OverworldAIController.OverrideAnimation)
+		{
+			return;
+		}
 		UpdateAnimation();
+	}
+	public override void _PhysicsProcess(double delta)
+	{
+		AnimationProcess(delta);
+		MovementProcess(delta);
 	}
 }
