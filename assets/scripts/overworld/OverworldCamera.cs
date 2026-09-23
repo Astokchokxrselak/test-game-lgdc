@@ -4,9 +4,10 @@ using System.Collections.Generic;
 
 public static class OverworldCameraController
 {
+    public static bool OverrideCamera = false;
     public static void UpdateCamera(Camera2D camera, CharacterController character, double delta)
     {
-        if (OverworldAIController.OverrideCamera)
+        if (OverrideCamera)
             return;
 
         if (camera != null && character != null)
@@ -18,6 +19,7 @@ public static class OverworldCameraController
 
 public partial class OverworldCamera : Camera2D, IEntity
 {
+
     private CharacterController playerCharacter;
 
     public void Initialize()

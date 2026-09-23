@@ -54,7 +54,7 @@ public class PlayerAI : OverworldAI
 }
 public static class OverworldAIController
 {
-    public static bool OverrideAnimation = false, OverrideMovement = false, OverrideCamera = false;
+    public static bool OverrideAnimation = false, OverrideMovement = false;
     public static Dictionary<OverworldAIType, OverworldAI> AIDictionary = new Dictionary<OverworldAIType, OverworldAI>();
     public static void Initialize()
     {
