@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://b2uk7l6gldv43" path="res://assets/scripts/player/PlayerData.cs" id="5_g144q"]
 [ext_resource type="Script" uid="uid://oax05jyivwmv" path="res://assets/scripts/overworld/OverworldCamera.cs" id="5_vx38l"]
 [ext_resource type="Texture2D" uid="uid://si7gshqxw6ad" path="res://assets/test sprites/inmate_overworld.png" id="6_htmdd"]
-[ext_resource type="Script" uid="uid://dao65c16d8hts" path="res://NPCData.cs" id="7_cgas4"]
+[ext_resource type="Script" uid="uid://bdv4o6qa5a00s" path="res://InmateNPCData.cs" id="7_cgas4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hmeho"]
 texture = ExtResource("1_03qsq")
@@ -96,6 +96,7 @@ script = ExtResource("2_hmeho")
 AIType = 2
 
 [node name="Sprite" type="Sprite2D" parent="RygosOverworld" unique_id=1225076755]
+y_sort_enabled = true
 texture = ExtResource("2_xuk6i")
 
 [node name="Collider" type="CollisionShape2D" parent="RygosOverworld" unique_id=616824893]
@@ -113,6 +114,7 @@ position = Vector2(0, -47)
 script = ExtResource("2_hmeho")
 
 [node name="Sprite" type="Sprite2D" parent="InmateOverworld" unique_id=1080261049]
+y_sort_enabled = true
 texture = ExtResource("6_htmdd")
 
 [node name="Collider" type="CollisionShape2D" parent="InmateOverworld" unique_id=684637811]
@@ -124,6 +126,7 @@ libraries/ = SubResource("AnimationLibrary_htmdd")
 
 [node name="Data" type="Node2D" parent="InmateOverworld" unique_id=684968625]
 script = ExtResource("7_cgas4")
+DetectionRadius = 100.0
 
 [node name="OverworldCamera" type="Node2D" parent="." unique_id=1533282212]
 script = ExtResource("5_vx38l")

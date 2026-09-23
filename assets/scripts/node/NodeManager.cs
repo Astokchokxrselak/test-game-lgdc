@@ -28,12 +28,12 @@ public static class NodeManager
 {
     private static void InitializeNodes()
     {
-        var tree = GameManager.Singleton;
-        tree.FindChildren("*").OfType<ILowPriorityEntity>().ToList().ForEach(character =>
+        var tree = GameManager.Singleton.FindChildren("*");
+        tree.OfType<IHighPriorityEntity>().ToList().ForEach(character =>
         {
             character.Initialize();
         });
-        tree.FindChildren("*").OfType<IHighPriorityEntity>().ToList().ForEach(character =>
+        tree.OfType<ILowPriorityEntity>().ToList().ForEach(character =>
         {
             character.Initialize();
         });

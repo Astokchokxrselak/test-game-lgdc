@@ -2,7 +2,7 @@ using Godot;
 using System;
 
 // Character controller for handling character movement and animation in the overworld.
-public partial class CharacterController : CharacterBody2D, IEntity
+public partial class CharacterController : CharacterBody2D, ILowPriorityEntity
 {
 	[Export]
 	public OverworldAIType AIType = OverworldAIType.Static;  // The type of AI behavior for this character

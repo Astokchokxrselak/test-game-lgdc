@@ -19,7 +19,7 @@ public class CutsceneIR : InteractionResult
 {
 	public int? cutsceneID;
 }
-public abstract partial class NPCData : EntityData, IEntity, ICombatNPC
+public abstract partial class NPCData : EntityData, ILowPriorityEntity, ICombatNPC
 {
 	[Export]
 	public float DetectionRadius = -1;  // if -1, does not detect player
@@ -27,8 +27,18 @@ public abstract partial class NPCData : EntityData, IEntity, ICombatNPC
 	public virtual bool InteractOnContact { get; }
 	public int Health { get; set; }
 	public int MaxHealth { get; set; }
-	public void Initialize()
+
+	// private Line2D _testline;
+	public override void Initialize()
 	{
+		/*
+		_testline = new Line2D();
+		AddChild(_testline);
+		_testline.GlobalPosition = Vector2.Zero;
+		_testline.Points = [default, default];
+		*/
+
+		base.Initialize();
 		_excludedBodies ??= [default];
 		if (DetectsPlayer)
 			Init();
@@ -40,6 +50,7 @@ public abstract partial class NPCData : EntityData, IEntity, ICombatNPC
 	public virtual void OnLostPlayer(float playerDistance, CharacterController player) { }
 	public abstract void OnInteract(CharacterController player);
 	public abstract InteractionResult PostInteract(CharacterController player);
+	private const float RayCastMargin = 8f;
 
 	public void TryDetectIfNear()
 	{
@@ -47,12 +58,22 @@ public abstract partial class NPCData : EntityData, IEntity, ICombatNPC
 		if (playerDistance < DetectionRadius * DetectionRadius)
 		{
 			var space_state = GetWorld2D().DirectSpaceState;
-			var query = PhysicsRayQueryParameters2D.Create(GlobalPosition, PlayerData.Instance.Character.GlobalPosition);
+			var start = GlobalPosition;
+			var end = (PlayerData.Instance.Character.GlobalPosition - GlobalPosition).Normalized() * (DetectionRadius + RayCastMargin) + GlobalPosition;
+			var query = PhysicsRayQueryParameters2D.Create(start, end);
+
+			// _testline.SetPointPosition(0, start);
+			// _testline.SetPointPosition(1, end);
 
 			_excludedBodies[0] = Character.GetRid();
 			query.Exclude = _excludedBodies;
 
 			var result = space_state.IntersectRay(query);
+			if (result == null || result.Count == 0)
+			{
+				GD.Print("No collision detected.");
+				return;
+			}
 			Node2D collider = (Node2D)result["collider"];
 			if (collider != null && collider == PlayerData.Instance.Character)
 			{

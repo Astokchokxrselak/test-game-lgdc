@@ -8,11 +8,11 @@ public interface ICombatNPC
 }
 
 // this script stores player data for global use and caching
-public abstract partial class EntityData : Node2D, IEntity
+public abstract partial class EntityData : Node2D
 {
     private CharacterController character;
     public CharacterController Character { get => character; }
-    public void Initialize()
+    public virtual void Initialize()
     {
         character = GetParent<CharacterController>();  // this object (the PlayerData) is attached to the player character
                                                        // Initialization logic for player-specific node data
