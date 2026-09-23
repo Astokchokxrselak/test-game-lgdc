@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://cvy5660kkj6uj" path="res://assets/test sprites/rygos_overworld.png" id="2_xuk6i"]
 [ext_resource type="Script" uid="uid://b2uk7l6gldv43" path="res://assets/scripts/player/PlayerData.cs" id="5_g144q"]
 [ext_resource type="Script" uid="uid://oax05jyivwmv" path="res://assets/scripts/overworld/OverworldCamera.cs" id="5_vx38l"]
+[ext_resource type="Texture2D" uid="uid://si7gshqxw6ad" path="res://assets/test sprites/inmate_overworld.png" id="6_htmdd"]
+[ext_resource type="Script" uid="uid://dao65c16d8hts" path="res://NPCData.cs" id="7_cgas4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hmeho"]
 texture = ExtResource("1_03qsq")
@@ -28,7 +30,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("RygosSprite:rotation")
+tracks/0/path = NodePath("Sprite:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -44,7 +46,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("RygosSprite:rotation")
+tracks/0/path = NodePath("Sprite:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -61,7 +63,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("RygosSprite:rotation")
+tracks/0/path = NodePath("Sprite:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -93,19 +95,38 @@ tile_set = SubResource("TileSet_vx38l")
 script = ExtResource("2_hmeho")
 AIType = 2
 
-[node name="RygosSprite" type="Sprite2D" parent="RygosOverworld" unique_id=1225076755]
+[node name="Sprite" type="Sprite2D" parent="RygosOverworld" unique_id=1225076755]
 texture = ExtResource("2_xuk6i")
 
-[node name="RygosCollider" type="CollisionShape2D" parent="RygosOverworld" unique_id=616824893]
+[node name="Collider" type="CollisionShape2D" parent="RygosOverworld" unique_id=616824893]
 position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_03qsq")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="RygosOverworld" unique_id=746580459]
 libraries/ = SubResource("AnimationLibrary_htmdd")
 
-[node name="PlayerData" type="Node2D" parent="RygosOverworld" unique_id=1560923318]
+[node name="Data" type="Node2D" parent="RygosOverworld" unique_id=1560923318]
 script = ExtResource("5_g144q")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1309246813]
-zoom = Vector2(3, 3)
+[node name="InmateOverworld" type="CharacterBody2D" parent="." unique_id=351393594]
+position = Vector2(0, -47)
+script = ExtResource("2_hmeho")
+
+[node name="Sprite" type="Sprite2D" parent="InmateOverworld" unique_id=1080261049]
+texture = ExtResource("6_htmdd")
+
+[node name="Collider" type="CollisionShape2D" parent="InmateOverworld" unique_id=684637811]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_03qsq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="InmateOverworld" unique_id=627003483]
+libraries/ = SubResource("AnimationLibrary_htmdd")
+
+[node name="Data" type="Node2D" parent="InmateOverworld" unique_id=684968625]
+script = ExtResource("7_cgas4")
+
+[node name="OverworldCamera" type="Node2D" parent="." unique_id=1533282212]
 script = ExtResource("5_vx38l")
+
+[node name="Camera2D" type="Camera2D" parent="OverworldCamera" unique_id=1309246813]
+zoom = Vector2(3, 3)

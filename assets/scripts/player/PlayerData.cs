@@ -2,13 +2,14 @@ using Godot;
 using System;
 
 // this script stores player data for global use and caching
-public partial class PlayerData : Node2D, IEntity
+public partial class PlayerData : NPCData
 {
-    public static CharacterController PlayerCharacter { get; private set; }
-    public int Health { get; set; }
-    public int MaxHealth { get; set; }
-    public void Initialize()
+    public override void Init()
     {
-        PlayerCharacter = GetParent<CharacterController>();  // this object (the PlayerData) is attached to the player character
+        // Initialization logic for player-specific node data
+    }
+    public override void OnUpdate(double delta)
+    {
+        // Update logic for player-specific data
     }
 }

@@ -5,7 +5,7 @@ using System;
 public partial class CharacterController : CharacterBody2D, IEntity
 {
 	[Export]
-	public OverworldAIType AIType = OverworldAIType.Static;
+	public OverworldAIType AIType = OverworldAIType.Static;  // The type of AI behavior for this character
 	public static float CharacterDefaultSpeed = 100f;  // in px/sec
 													   // Called when the node enters the scene tree for the first time.
 
