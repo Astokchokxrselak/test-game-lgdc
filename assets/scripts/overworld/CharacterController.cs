@@ -1,6 +1,7 @@
 using Godot;
 using System;
 
+// Character controller for handling character movement and animation in the overworld.
 public partial class CharacterController : CharacterBody2D, IEntity
 {
 	[Export]
