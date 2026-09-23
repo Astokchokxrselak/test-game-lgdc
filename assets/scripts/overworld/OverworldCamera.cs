@@ -23,7 +23,7 @@ public partial class OverworldCamera : Node2D, IEntity
     // Caches player character reference
     public void Initialize()
     {
-        playerCharacter = PlayerData.PlayerCharacter;
+        playerCharacter = PlayerData.Instance.Character;
     }
 
     public override void _Process(double delta)
